@@ -1,0 +1,82 @@
+ruby可以定义带参或者不带参的自定义方法，而且带参的方法可以指定缺省值
+
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	class User
+		def method_name(arg1="Ruby",arg2="Perl")
+			puts "方法参数有#{arg1},#{arg2}"
+		end
+	end
+		
+	
+ruby方法默认都有一个返回值，返回值默认为最后一个语句的值
+
+	def test
+		i=10
+		j=20
+		k=30
+	end
+	
+上述test方法会返回变量k的值，可以使用return关键字
+
+	return expr1,expr2
+	
+如果返回超过两个表达式，则返回的是一个数组Array
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	def test
+		i=10
+		j=20
+		k=30
+		return i,j,k
+	end
+	
+	var = test
+	puts var
+	
+上述例子运行结果为
+	10
+	20
+	30
+
+
+ruby方法可以定义可变数量的参数，即方法声明的时候可以不明确指定有几个参数，ruby会将所有参数视为一个数组
+
+	#!/usr/bin/ruby
+	#-*- coding:UTF-8 -*-
+	
+	def simple(*test)
+		puts "参数个数为:#{test.length}"
+		for i in 0...test.length
+			puts "参数值为：#{test[i]}"
+		end
+	end
+	
+	
+ruby的类方法
+上面举得例子都是普通方法，定义在类声明之外，可见性为private。在类中声明的方法的可见性为public，但是类中声明的普通方法必须实例化对象才能调用。
+ruby提供了一种不用实例化对象就能调用的类方法（直接由类名调用，使用方式类似于java的static方法）
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	class User
+		def initialize(userId,userName,age)	#类似于java的带参构造方法
+		end
+		
+		def show(arg1="arg1",arg2="arg2")	#类中定义的带参数默认值的普通方法，由类的实例化对象调用
+		end
+
+		def mount(*args)			#不定参数数量的普通方法
+		end
+
+		def User.ask				#类方法，声明方式为类名.方法名，可直接调用，无需实例化对象
+		end
+	end
+
+
+
