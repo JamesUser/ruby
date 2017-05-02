@@ -102,3 +102,37 @@ end
 
 
 1 2 3 4 5
+
+
+
+三、ruby中的类和变量
+ruby中的类定义：
+
+	class User
+
+	end
+
+ruby中的变量有四种：
+	1.局部变量，在方法中定义的变量。以小写英文字母或_开头命名
+	2.实例变量，实例变量可以跨特定的实例或对象的方法中使用，以@开头命名
+	3.类变量，可以跨不同的对象使用，以@@开头命名变量
+	4.全局变量，可以跨类使用，以$开头命名变量
+例如：
+#!/usr/bin/ruby
+$global_variable=10	#全局变量
+class User	
+	@@work="teacher"	#类变量
+	def initialize(userId,userName,sex)	#局部变量
+		@user_id=id
+		@user_name=name
+		@user_sex=sex			#实例变量
+	
+	end
+end
+	
+
+
+
+
+
+
