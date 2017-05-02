@@ -118,6 +118,9 @@ ruby中的变量有四种：
 	2.实例变量，实例变量可以跨特定的实例或对象的方法中使用，以@开头命名
 	3.类变量，可以跨不同的对象使用，以@@开头命名变量
 	4.全局变量，可以跨类使用，以$开头命名变量
+	5.常量，大写字母开头
+	
+*未初始化的变量的值为nil,常量不能定义在方法内，引用一个未初始化的常量会报错
 	
 例如：
 
@@ -126,13 +129,17 @@ ruby中的变量有四种：
 $global_variable=10	#全局变量
 
 class User	
-
+	
+	VAR1=100	#常量
 	@@work="teacher"	#类变量
 	def initialize(userId,userName,sex)	#局部变量
 		@user_id=id
 		@user_name=name
 		@user_sex=sex			#实例变量
 	
+	end
+	def show
+		puts "定义的常量为#{VAR1}"
 	end
 	
 end
@@ -145,12 +152,88 @@ ruby中可以通过def自定义方法，例如：
 
 #!/usr/bin/ruby
 
-class User
+$global_variable="James"
 
+class User
+		
         def ask
-                puts "why?"
+                puts "why?#$global_variable"
         end
 end
+
+创建对象调用自定义方法：
+
+user=User.new
+
+user.ask
+
+
+四、ruby中特殊的运算符
+
+<=>联合比较运算符
+
+	a<=>b
+
+	a等于b时返回0，a大于b时返回1，a小于b时返回-1
+
+.eql?同时比较值和类型
+	
+	1 == 1.0 返回true
+	1.eql?1.0 返回false
+
+equal?比较是否是相同的对象
+
+
+ruby的并行赋值
+
+	a=10
+	b=20
+	c=30
+可以使用并行赋值，在一条语句中完成赋值
+	
+	a,b,c = 10,20,30
+	
+并行赋值在交换两个变量的值很有用处
+
+	a,b = b,c
+	
+ruby的逻辑运算符
+
+	and 逻辑与，当两个操作数都为真时，结果为真
+	or 逻辑或，当两个操作数有一个非零时，结果为真
+	&& 逻辑与，当两个操作数都非零，结果为真
+	|| 逻辑或，当两个操作数有一个非零，结果为真
+	! 逻辑非，逆转条件结果
+	not 逻辑非，逆转条件结果
+	
+	
+ruby的三元运算符
+
+	condition？ value1:value2 如果条件为真? 则值为value1：为假值为value2
+
+ruby的defined?运算符
+
+	defined? 判断表达式是否定义，返回表达式的描述字符串，未定义的表达式返回nil，表达式可以是变量、方法
+例如：
+
+变量：
+	
+	foo=10
+	$var="var"
+	defined? variable #如果variable已定义，返回True
+	defined? foo	#返回"local-variable"
+	defined? $var	#返回"global_variable"
+方法：
+
+	defined? puts	#返回"method"
+	defined? puts(bar)	#返回nil，bar没有定义
+	defined? show	#返回nil，show方法没有定义
+	
+
+
+
+
+
 
 
 
