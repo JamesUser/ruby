@@ -1,0 +1,70 @@
+ruby条件判断
+
+
+if..else语句
+
+	if conditional then
+		code...
+	elsif conditional then
+		code...
+	else
+		code...
+	end
+	
+*then在多行写法时可以省略，但是在一行写法时不能省略
+*ruby中条件判断false和nil为假，其余都为真
+
+
+
+if修饰符
+
+	code if conditional
+
+conditional为真，则执行code
+
+
+unless修饰符
+
+	unless conditional then
+		code1..
+	else
+		code2..
+	end
+	
+如果conditional为假，执行code1；conditional为真，执行else的code2.同样在多行语法中then可以省略
+
+
+	code unless conditional
+
+如果conditional为假，则执行code
+
+
+case修饰符
+
+
+	case expr1
+	when expr2,expr3 then
+		code..
+	when expr3 then
+		code..
+	else
+		code..
+	end
+	
+将when的表达式与case的表达式通过===判断，为真则执行相应代码。例如：
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	$age=5
+	case $age
+	when 0..10
+		puts "熊孩子"
+	when 11..18
+		puts "少年"
+	else 
+		puts "老不死"
+	end
+	
+	
+*当case的表达式省略不写时，则执行第一个when条件为真的代码
