@@ -138,6 +138,19 @@ class User
 end
 	
 
+ruby中通过new创建对象，当需要创建带参数的对象时，类中必须有initialize方法，例如：
+user=User.new("001","James","男")
+
+ruby中可以通过def自定义方法，例如：
+#!/usr/bin/ruby
+class User
+        def ask
+                puts "why?"
+        end
+end
+
+
+
 
 
 
