@@ -1,0 +1,92 @@
+ruby模块是将方法、类、常量组合在一起的语法块
+
+	module module_name
+  	end
+	
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	#定义在moral.rb中的模块
+	
+	module Moral
+		VERY_BAD = 0
+		BAD = 1
+		def Moral.sin(badness)
+			puts "#{badness}"
+  		end
+	end
+	
+	
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	#定义在trig.rb中的模块
+	
+	module Trig
+		PI = 3.1415926
+		def Trig.sin(x)
+		end
+		
+		def Trig.cos(x)
+		end
+	end
+	
+	
+require关键字--引入.rb文件（类似于java的import）
+
+	require filename
+	
+例如：
+
+	$LOAD_PATH<<'.'		#当前路径下引入
+	require 'trig.rb'
+	require 'moral'		#引入.rb文件，.rb可省略
+	
+	y=Trig.sin(Trig::PI/4)	#::为引用常量
+	x=Moral.sin(Moral::VERY_BAD)
+	
+		
+include关键字--引入某一个模块
+
+	include modulename
+	
+例如:
+	#!/usr/bin/ruby
+	
+	#定义在week.rb文件中
+	module Week
+		FIRST_DAY="Sunday"
+		def Week.weeks_in_month
+			puts "You have four weeks in a month"
+		end
+		
+		def Week.weeks_in_year
+			puts "You have 52 weeks in a year"
+		end
+	end
+	
+	
+	#!/usr/bin/ruby
+	$LOAD_PATH<<'.'
+	require 'week'
+	
+	class Decade
+		include Week
+		no_of_year=10
+		def no_of_month
+			puts Week::FIRST_DAY
+			num = no_of_year*12
+		end
+	end
+	
+	
+通过include关键字在类中引入模块，可以变相认为是多重继承或mixins
+	
+	
+	
+	
+	
+		
+
+
