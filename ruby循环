@@ -1,0 +1,118 @@
+while循环
+
+	while conditional do
+		code..
+	end
+	
+或者
+
+	while conditional :
+		code
+	end
+	
+*do和:在多行语法中可以省略
+
+	#!/usr/bin/ruby
+	$i = 1
+	$num = 10
+	while $i<$num do
+		puts "i=#$i"
+		$i +=1
+	end
+	
+while修饰符
+
+
+	code while conditional
+	
+conditional为真时，循环执行code
+
+	begin
+		code
+	end while conditional
+
+conditional为真时，执行code。此语法特殊的地方是在判断conditional之前，code就会执行一次（类似于java的do while）
+
+
+until循环
+
+
+	until conditional do
+		code
+	end
+	
+conditional为假时，循环执行code
+
+until修饰符
+
+	code until conditional
+	
+conditional为假时，循环执行code
+
+
+for循环
+
+	for variable in expr do
+		code
+	end
+	
+例如：
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	for i in 0..5 do
+		puts "#{i}"
+	end
+	
+等价于
+	
+	#!/usr/bin/ruby
+	#-*- coding:UTF-8 -*-
+	
+	(0..5).each do |i|
+		puts "#{i}"
+	end
+
+
+
+
+break关键字--终止循环
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	for i in 1..10 
+		if i == 9 
+			break
+		end
+		puts "局部变量为#{i}"
+	end
+	
+next关键字--终止当次循环(类似于java的continue)
+
+	#!/usr/bin/ruby
+	#coding:UTF-8
+	
+	$i = 0
+	$num = 10
+	while $i<$num
+		if $i<3 then 
+			next
+		end
+		$i +=1
+	end
+
+
+redo关键字--重新执行最内部循环的当次迭代，并且不检查循环条件
+
+	#!/usr/bin/ruby
+	
+	for i in 0..9
+		if i < 3
+			redo
+		end
+	end
+	
+上面程序为死循环
+
